@@ -1,0 +1,82 @@
+get:
+  summary: Returns a user from the participant registry.
+  operationId: getUser
+  description: Returns all details of an already registered user.
+  tags:
+    - User
+  parameters:
+    - in: path
+      name: id
+      description: The user's unique reference number.
+      required: true
+      schema:
+        type: string
+        minLength: 4
+        example: AB-1
+  responses:
+    '200':
+      description: A JSON object response containing all details of the requested user.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../schemas/create-user.yaml"
+              - $ref: "../schemas/register-user.yaml"
+    default:
+      $ref: "../responses/server-error.yaml"
+patch:
+  summary: Updates a user's details in the participant registry.
+  operationId: patchUser
+  description: Updates the details of an already registered user.
+  tags:
+    - User
+  parameters:
+    - in: path
+      name: id
+      description: The user's unique reference number.
+      required: true
+      schema:
+        type: string
+        minLength: 4
+        example: AB-1
+  requestBody:
+    description: The necessary personal details to create a new user entry.
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/update-user.yaml"
+  responses:
+    '200':
+      description: A JSON object response containing all user details after we have applied the update.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../schemas/create-user.yaml"
+              - $ref: "../schemas/register-user.yaml"
+    default:
+      $ref: "../responses/server-error.yaml"
+delete:
+  summary: Archives a user in the participant registry
+  operationId: deleteUser
+  description: Soft deletes the user entry by adding a deletedAt field with a timestamp as its value.
+  tags:
+    - User
+  parameters:
+    - in: path
+      name: id
+      description: The user's unique reference number.
+      required: true
+      schema:
+        type: string
+        minLength: 4
+        example: AB-1
+  responses:
+    '200':
+      description: A confirmation message that the user has been archived.
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/delete-user.yaml"
+    default:
+      $ref: "../responses/server-error.yaml"

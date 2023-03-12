@@ -1,0 +1,8 @@
+type: object
+properties:
+  id:
+    type: string
+    minLength: 4
+    example: AB-1
+required:
+  - id

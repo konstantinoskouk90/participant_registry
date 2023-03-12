@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  description: Your API Description here
+  version: 1.0.0
+  title: API Docs Title
+servers:
+  - url: /api/v1
+
+paths:
+  /users:
+    $ref: "./paths/users.post.yaml"
+  /users/{id}:
+    $ref: "./paths/users.yaml"

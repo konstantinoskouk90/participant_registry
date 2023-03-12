@@ -1,0 +1,57 @@
+type: object
+properties:
+  firstName:
+    type: string
+    minLength: 1
+    maxLength: 500
+    example: Jane
+  lastName:
+    type: string
+    minLength: 1
+    maxLength: 500
+    example: Doe
+  dateOfBirth:
+    type: string
+    format: date
+    minLength: 10
+    maxLength: 10
+    example: 1991-01-01
+  countryCode:
+    type: string
+    example: +44
+  phoneNumber:
+    type: number
+    minLength: 9
+    maxLength: 15
+    pattern: /[0-9]/
+    example: 123456789
+  addressLine1:
+    type: string
+    minLength: 1
+    maxLength: 500
+    example: 123 Test Street
+  addressLine2:
+    type: string
+    minLength: 1
+    maxLength: 500
+    example: Flat A
+  postcode:
+    type: string
+    minLength: 6
+    maxLength: 8
+    example: T1 1AB
+  city:
+    type: string
+    minLength: 1
+    maxLength: 500
+    example: London
+required:
+  - firstName
+  - lastName
+  - dateOfBirth
+  - countryCode
+  - phoneNumber
+  - addressLine1
+  - addressLine2
+  - postcode
+  - city

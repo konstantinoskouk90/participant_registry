@@ -1,0 +1,23 @@
+post:
+  summary: Adds a user to the participant registry.
+  operationId: postUser
+  description: Adds a user to the participant registry generating a unique id.
+  tags:
+    - User
+  requestBody:
+    description: The necessary personal details to create a new user entry.
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/create-user.yaml"
+  responses:
+    '200':
+      description: A JSON object response containing all details of a newly created user.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../schemas/create-user.yaml"
+              - $ref: "../schemas/register-user.yaml"
+    default:
+      $ref: "../responses/server-error.yaml"
